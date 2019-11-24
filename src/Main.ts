@@ -12,10 +12,16 @@ const SHARPS = [
 ];
 const ALL = [...NATURAL, ...FLATS, ...SHARPS];
 
+/**
+ * Return an integer in the range [0,max).
+ */
 function random(max: number): number {
     return Math.floor(Math.random()*max);
 }
 
+/**
+ * Update the UI when the user clicks the page.
+ */
 function mainTextClick(mainText: HTMLElement) {
     while (true) {
         const note = ALL[random(ALL.length)];
@@ -28,8 +34,8 @@ function mainTextClick(mainText: HTMLElement) {
 
 export function main() {
     const mainText = document.getElementById("main_text") as HTMLElement;
-    mainText.onclick = function (event: Event) {
+    mainText.onmousedown = function (event: Event) {
         mainTextClick(mainText);
         event.preventDefault();
-    }
+    };
 }

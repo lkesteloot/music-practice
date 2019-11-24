@@ -13,9 +13,15 @@ define("Main", ["require", "exports"], function (require, exports) {
         "A♯", "C♯", "D♯", "F♯", "G♯"
     ];
     const ALL = [...NATURAL, ...FLATS, ...SHARPS];
+    /**
+     * Return an integer in the range [0,max).
+     */
     function random(max) {
         return Math.floor(Math.random() * max);
     }
+    /**
+     * Update the UI when the user clicks the page.
+     */
     function mainTextClick(mainText) {
         while (true) {
             const note = ALL[random(ALL.length)];
@@ -27,7 +33,7 @@ define("Main", ["require", "exports"], function (require, exports) {
     }
     function main() {
         const mainText = document.getElementById("main_text");
-        mainText.onclick = function (event) {
+        mainText.onmousedown = function (event) {
             mainTextClick(mainText);
             event.preventDefault();
         };

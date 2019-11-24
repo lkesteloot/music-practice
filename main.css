@@ -4,10 +4,11 @@ body {
 }
 #main_text {
     height: 100vh;
-    font-size: 48pt;
+    font-size: 100pt;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     font-weight: bold;
+    text-align: center;
 }
