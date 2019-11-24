@@ -1,0 +1,13 @@
+
+body {
+    font-family: sans-serif;
+}
+#main_text {
+    height: 100vh;
+    font-size: 48pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
