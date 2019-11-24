@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <title>Music Practice</title>
     <link href="main.css?v=1" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -10,6 +11,43 @@
 <body>
     <div id="main_text">
         Tap screen
+    </div>
+    <div id="options" class="form">
+        <div class="checkbox_set">
+            <div class="checkbox_group">
+                <input type="checkbox" id="naturals" checked>
+                <label for="naturals">Naturals</label>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="flats">
+                <label for="flats">Flats ♭</label>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="sharps">
+                <label for="sharps">Sharps ♯</label>
+            </div>
+        </div>
+        <div class="checkbox_set">
+            <div class="checkbox_group">
+                <input type="checkbox" id="major" checked>
+                <label for="major">Major</label>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="minor">
+                <label for="minor">Minor</label>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="dominant_seventh">
+                <label for="dominant_seventh">Dominant seventh</label>
+            </div>
+            <div class="checkbox_group">
+                <input type="checkbox" id="minor_seventh">
+                <label for="minor_seventh">Minor seventh</label>
+            </div>
+        </div>
+    </div>
+    <div id="options_button">
+        <img src="gear.svg" alt="Settings">
     </div>
     <script src="require-2.3.6.js"></script>
     <script src="build/compiled.js"></script>

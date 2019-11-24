@@ -12,7 +12,6 @@ define("Main", ["require", "exports"], function (require, exports) {
         // Skipping B♯ and E♯.
         "A♯", "C♯", "D♯", "F♯", "G♯"
     ];
-    const ALL = [...NATURAL, ...FLATS, ...SHARPS];
     /**
      * Return an integer in the range [0,max).
      */
@@ -22,9 +21,41 @@ define("Main", ["require", "exports"], function (require, exports) {
     /**
      * Update the UI when the user clicks the page.
      */
-    function mainTextClick(mainText) {
+    function mainTextClick(mainText, naturals, flats, sharps, major, minor, dominantSeventh, minorSeventh) {
+        // Set of notes we can play.
+        let notes = [];
+        if (naturals) {
+            notes = notes.concat(NATURAL);
+        }
+        if (flats) {
+            notes = notes.concat(FLATS);
+        }
+        if (sharps) {
+            notes = notes.concat(SHARPS);
+        }
+        if (notes.length === 0) {
+            return;
+        }
+        // Types of chords we can play.
+        let suffixes = [];
+        if (major) {
+            suffixes.push("");
+        }
+        if (minor) {
+            suffixes.push("m");
+        }
+        if (dominantSeventh) {
+            suffixes.push("7");
+        }
+        if (minorSeventh) {
+            suffixes.push("m7");
+        }
+        if (suffixes.length === 0) {
+            return;
+        }
+        // Choose new text.
         while (true) {
-            const note = ALL[random(ALL.length)];
+            const note = notes[random(notes.length)] + suffixes[random(suffixes.length)];
             if (note !== mainText.innerText) {
                 mainText.innerText = note;
                 break;
@@ -33,8 +64,27 @@ define("Main", ["require", "exports"], function (require, exports) {
     }
     function main() {
         const mainText = document.getElementById("main_text");
+        const optionsButton = document.getElementById("options_button");
+        const options = document.getElementById("options");
+        const naturals = document.getElementById("naturals");
+        const flats = document.getElementById("flats");
+        const sharps = document.getElementById("sharps");
+        const major = document.getElementById("major");
+        const minor = document.getElementById("minor");
+        const dominantSeventh = document.getElementById("dominant_seventh");
+        const minorSeventh = document.getElementById("minor_seventh");
+        optionsButton.onclick = function (event) {
+            // Toggle options.
+            if (options.style.display === "block") {
+                options.style.display = "none";
+            }
+            else {
+                options.style.display = "block";
+            }
+            event.preventDefault();
+        };
         mainText.onmousedown = function (event) {
-            mainTextClick(mainText);
+            mainTextClick(mainText, naturals.checked, flats.checked, sharps.checked, major.checked, minor.checked, dominantSeventh.checked, minorSeventh.checked);
             event.preventDefault();
         };
     }
